@@ -1,0 +1,34 @@
+function dX = f_sysdiff(t,X,p,ppe)
+
+
+
+F  = p(1);
+R  = p(2);
+Ld = p(3);
+Lr = p(4);
+
+Ma = X(1) ;
+Mr = X(2) ;
+%Mf = X(3) ;
+Mf =1- (Ma+ Mr) ;
+% Mf
+% Ma + Mr
+% 1- Mf
+% 
+
+TL=ppval(ppe,t);
+
+C = f_C(TL, Ma, Mr, Ld, Lr) ;
+
+if Mf>=1
+    %keyboard
+end
+
+dMa = C - F * Ma ;
+dMr = -C + R * Mf ;
+dMf = F * Ma - R * Mr ;
+
+dX(1,1) = dMa ;
+dX(2,1) = dMr ;
+dX(3,1) = dMf ;
+end
