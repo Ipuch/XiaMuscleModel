@@ -24,14 +24,10 @@ TL=ppval(ppe,t);
 % Time-varying activation-deactivation drive computation
 C = f_C(TL, Ma, Mr, Ld, Lr) ;
 
-if Mf>=1
-    %keyboard
-end
-
 % equation (1)
 dMa = C - F * Ma ;
 dMr = -C + R * Mf ;
-dMf = F * Ma - R * Mr ;
+dMf = F * Ma - R * Mf ;
 
 dX(1,1) = dMa ;
 dX(2,1) = dMr ;
